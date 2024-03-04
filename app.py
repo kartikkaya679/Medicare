@@ -20,9 +20,9 @@ app.secret_key = 'your secret key'
 mydb = mysql.connector.connect(
   host="sql6.freesqldatabase.com",
   port=3306,
-  user="sql6688430",
-  password="1uxLN2gtkY",
-  database='sql6688430'
+  user="sql6688636",
+  password="YjyHvf2ekH",
+  database='sql6688636'
 )
 print(mydb)
 mycursor = mydb.cursor()
