@@ -150,7 +150,7 @@ def viewappointment():
         msg = session['username']
         patient_id = session['p_id']
         #sql query
-        sql="SELECT booked_appointment.a_id,booked_appointment.p_id,booked_appointment.fullname,booked_appointment.age,booked_appointment.gender,booked_appointment.mobileno,booked_appointment.a_date,Booked_Appointment.a_time,Doctor_Prescription.dp_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Doctor_Prescription.a_id=booked_appointment.a_id WHERE booked_appointment.p_id = %s ORDER BY booked_appointment.a_id DESC"
+        sql="SELECT Booked_Appointment.a_id,Booked_Appointment.p_id,Booked_Appointment.fullname,Booked_Appointment.age,Booked_Appointment.gender,Booked_Appointment.mobileno,Booked_Appointment.a_date,Booked_Appointment.a_time,Doctor_Prescription.dp_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Doctor_Prescription.a_id=Booked_Appointment.a_id WHERE Booked_Appointment.p_id = %s ORDER BY Booked_Appointment.a_id DESC"
         mycursor.execute(sql, (patient_id,))
         appointmentdata = mycursor.fetchall()
 
@@ -309,7 +309,7 @@ def exploreusers():
         return redirect(url_for('adminlogin'))
     else:
         msg = session['username']
-        sql="SELECT * FROM `patient_master` ORDER BY p_id ASC"
+        sql="SELECT * FROM `Patient_Master` ORDER BY p_id ASC"
         mycursor.execute(sql,)
         userdatabase = mycursor.fetchall()
 
@@ -373,7 +373,7 @@ def exploreprescription():
         return redirect(url_for('adminlogin'))
     else:
         msg = session['username']
-        sql="SELECT dp_id,fullname,age,symptoms,prescription,a_date FROM Doctor_Prescription LEFT JOIN booked_appointment ON Booked_Appointment.a_id = Doctor_Prescription.a_id ORDER BY a_date DESC"
+        sql="SELECT dp_id,fullname,age,symptoms,prescription,a_date FROM Doctor_Prescription LEFT JOIN Booked_Appointment ON Booked_Appointment.a_id = Doctor_Prescription.a_id ORDER BY a_date DESC"
         mycursor.execute(sql,)
         prescriptiondatabase = mycursor.fetchall()
 
@@ -386,7 +386,7 @@ def explorefeedback():
         return redirect(url_for('adminlogin'))
     else:
         msg = session['username']
-        sql="SELECT patient_master.fullname,f_date,feedback_message FROM Feedback_m LEFT JOIN patient_master ON patient_master.p_id = feedback_m.p_id ORDER BY f_date DESC"
+        sql="SELECT Patient_Master.fullname,f_date,Feedback_message FROM Feedback_m LEFT JOIN Patient_Master ON Patient_Master.p_id = Feedback_m.p_id ORDER BY f_date DESC"
         mycursor.execute(sql,)
         feedbackdatabase = mycursor.fetchall()
 
@@ -440,7 +440,7 @@ def sendreminder():
         email_datedatabase = mycursor.fetchall()
 
         if len(email_datedatabase) == 0:
-            sql="Select emailid,a_date,a_time FROM Booked_Appointment LEFT JOIN patient_master ON patient_master.p_id = booked_appointment.p_id WHERE a_date = %s"
+            sql="Select emailid,a_date,a_time FROM Booked_Appointment LEFT JOIN Patient_Master ON Patient_Master.p_id = Booked_Appointment.p_id WHERE a_date = %s"
             mycursor.execute(sql,(maxdate,))
             ar_database = mycursor.fetchall()
             for item in ar_database:
