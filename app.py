@@ -150,7 +150,7 @@ def viewappointment():
         msg = session['username']
         patient_id = session['p_id']
         #sql query
-        sql="SELECT booked_appointment.a_id,booked_appointment.p_id,booked_appointment.fullname,booked_appointment.age,booked_appointment.gender,booked_appointment.mobileno,booked_appointment.a_date,Booked_Appointment.a_time,doctor_prescription.dp_id FROM Booked_Appointment LEFT JOIN doctor_prescription ON doctor_prescription.a_id=booked_appointment.a_id WHERE booked_appointment.p_id = %s ORDER BY booked_appointment.a_id DESC"
+        sql="SELECT booked_appointment.a_id,booked_appointment.p_id,booked_appointment.fullname,booked_appointment.age,booked_appointment.gender,booked_appointment.mobileno,booked_appointment.a_date,Booked_Appointment.a_time,Doctor_Prescription.dp_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Doctor_Prescription.a_id=booked_appointment.a_id WHERE booked_appointment.p_id = %s ORDER BY booked_appointment.a_id DESC"
         mycursor.execute(sql, (patient_id,))
         appointmentdata = mycursor.fetchall()
 
@@ -360,7 +360,7 @@ def exploreappointment():
     else: 
         msg = session['username']
         todaydate = str(date.today())
-        sql=sql="SELECT Booked_Appointment.a_id,Booked_Appointment.p_id,dp_id,fullname,age,gender,mobileno,a_date,a_time,Doctor_Prescription.prescription,Time_Master.t_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Booked_Appointment.a_id = Doctor_Prescription.a_id LEFT JOIN Time_Master ON Time_Master.Timing = Booked_Appointment.a_time WHERE Doctor_Prescription.prescription IS NULL AND a_date= %s ORDER BY Time_Master.t_id ASC"
+        sql="SELECT Booked_Appointment.a_id,Booked_Appointment.p_id,dp_id,fullname,age,gender,mobileno,a_date,a_time,Doctor_Prescription.prescription,Time_Master.t_id FROM Booked_Appointment LEFT JOIN Doctor_Prescription ON Booked_Appointment.a_id = Doctor_Prescription.a_id LEFT JOIN Time_Master ON Time_Master.Timing = Booked_Appointment.a_time WHERE Doctor_Prescription.prescription IS NULL AND a_date= %s ORDER BY Time_Master.t_id ASC"
         mycursor.execute(sql,(todaydate,))
         appointmentdatabase = mycursor.fetchall()
 
