@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title> Add Prescription </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="../static/assets/images/fevicon.png" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css" />
+      <!-- site css -->
+      <link rel="stylesheet" href="../static/assets/style.css" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="../static/assets/css/responsive.css" />
+      <!-- color css -->
+      <link rel="stylesheet" href="../static/assets/css/colors.css" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="../static/assets/css/bootstrap-select.css" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="../static/assets/css/perfect-scrollbar.css" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="../static/assets/css/custom.css" />
+      <!-- calendar file css -->
+      <link rel="stylesheet" href="../static/assets/js/semantic.min.css" />
+      <!-- fancy box js -->
+      <link rel="stylesheet" href="../static/assets/css/jquery.fancybox.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.../static/assets/js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body class="inner_page tables_page">
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+                  <div class="sidebar-header">
+                     <div class="logo_section">
+                        <a href="index.html"><img class="logo_icon img-responsive" src="../static/assets/images/logo/newlogo.png" alt="#" /></a>
+                     </div>
+                  </div>
+                  <div class="sidebar_user_info">
+                     <div class="icon_setting"></div>
+                     <div class="user_profle_side">
+                        <div class="user_img"><img class="img-responsive" src="../static/assets/images/layout_img/user_img.png" alt="#" /></div>
+                        <div class="user_info">
+                           <h6> {{msg}}</h6>
+                           <p><span class="online_animation"></span> Online</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="sidebar_blog_2">
+                  <h4>General</h4>
+                  <ul class="list-unstyled components">
+                     <li><a href="{{ url_for('dashboard') }}"><i class="fa fa-dashboard purple_color2"></i> <span>Dashboard</span></a></li>
+                     <li><a href="{{ url_for('exploreusers') }}"><i class="fa fa-user yellow_color"></i> <span> Explore Users </span></a></li>
+                     <li><a href="{{ url_for('exploreappointment') }}"><i class="fa fa-calendar green_color"></i> <span> Explore Appointment</span></a></li>
+                     <li><a href="{{ url_for('exploreprescription') }}"><i class="fa fa-object-group blue2_color"></i> <span>Explore Prescription</span></a></li>
+                     <li><a href="{{ url_for('drunavailability') }}"><i class="fa fa-calendar yellow_color"></i> <span>Add Dr Unavailability</span></a></li>
+                     <li><a href="{{ url_for('explorefeedback') }}"><i class="fa fa-comments-o red_color"></i> <span>Explore Feedback</span></a></li>
+                     
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                        <div class="logo_section">
+                           <a href="index.html"><img class="img-responsive" src="../static/assets/images/logo/logo.png" alt="#" /></a>
+                        </div>
+                        <div class="right_topbar">
+                           <div class="icon_info">
+                              <ul>
+                                 <!-- <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li>
+                                 <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-envelope-o"></i><span class="badge">3</span></a></li> -->
+                              </ul>
+                              <ul class="user_profile_dd">
+                                 <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="../static/assets/images/layout_img/user_img.png" alt="#" /><span class="name_user">{{msg}}</span></a>
+                                    <div class="dropdown-menu">
+                                       <a class="dropdown-item" href="{{ url_for('adminlogout') }}"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title">
+                              <h2> Add Prescription </h2>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                     <!-- row -->
+                  <section class="ftco-section">
+                     
+                     <div class="container" style="background-image: url(../static/assets/images/viewprescription.jpg);">
+                        <div class="row justify-content-center">
+                           <h1 class="clinic_taital"><img src="../static/assets/images/drugs_9767730.png"><span> Add Patient Prescription </span></h1>
+                        </div>
+                        <div class="row justify-content-center">
+                           <div class="col-lg-10">
+                           <div class="wrapper img" style="background-image: url(images/img.jpg); font-weight: normal;">
+                              <div class="row">
+                                 <div class="col-md-9 col-lg-7">
+                                 <div class="contact-wrap w-100 p-md-5 p-4">
+                                    
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label class="label">Full Name</label><br>
+                                             <text class="form-control">{{appointmentrecord['fullname']}}</text>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label class="label">Age</label><br>
+                                             <text class="form-control">{{appointmentrecord['age']}}</text>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label class="label">Gender</label><br>
+                                             <text class="form-control">{{appointmentrecord['gender']}}</text>
+                                          </div>
+                                       </div>
+                                       
+                                       <form action="{{ url_for('addprescription') }}" method="POST">
+                                          <div class="col-md-8">
+                                             <div class="form-group">
+                                               <label class="label" for="symptoms">Write Symptoms</label>
+                                               <input type="text" class="form-control" name="symptoms" id="symptoms" placeholder="write symptoms" required>
+                                             </div>
+                                           </div>
+
+                                          <div class="col-md-12">
+                                             <div class="form-group">
+                                                <label class="label">Write Prescription</label><br>
+                                                <textarea class="form-control" name="inputpresc" rows="8" cols="55" wrap = "hard" placeholder="write here" required></textarea>
+                                             </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                          <div class="form-group">
+                                             <input type="hidden" id="a_Id" name="a_Id" value="{{appointmentrecord['a_id']}}">
+                                             <input type="hidden" id="p_Id" name="p_Id" value="{{appointmentrecord['p_id']}}">
+                                             <input class="btn btn-success" type="submit" name="addpresc" value=" Add Prescription">
+                                          </div>
+                                          </div>
+                                       </form>
+
+                                    </div><br>
+                                    <h1><span>{{successmssg}}</span></h1><br>
+                                 </div>
+                                 </div>
+                              </div>
+                           </div>
+                           </div>
+                        </div>
+                     </div>
+                  </section>
+               
+               
+                  <!-- footer -->
+                  <div class="container-fluid">
+                     <div class="footer">
+                        <p>Copyright © 2024 Designed by html.design. All rights reserved.</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+         <!-- model popup -->
+         <!-- The Modal -->
+         <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                     <h4 class="modal-title">Modal Heading</h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                     Modal body..
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end model popup -->
+      </div>
+      <!-- jQuery -->
+      <script src="../static/assets/js/jquery.min.js"></script>
+      <script src="../static/assets/js/popper.min.js"></script>
+      <script src="../static/assets/js/bootstrap.min.js"></script>
+      <!-- wow animation -->
+      <script src="../static/assets/js/animate.js"></script>
+      <!-- select country -->
+      <script src="../static/assets/js/bootstrap-select.js"></script>
+      <!-- owl carousel -->
+      <script src="../static/assets/js/owl.carousel.js"></script> 
+      <!-- chart js -->
+      <script src="../static/assets/js/Chart.min.js"></script>
+      <script src="../static/assets/js/Chart.bundle.min.js"></script>
+      <script src="../static/assets/js/utils.js"></script>
+      <script src="../static/assets/js/analyser.js"></script>
+      <!-- nice scrollbar -->
+      <script src="../static/assets/js/perfect-scrollbar.min.js"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- fancy box js -->
+      <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+      <script src="../static/assets/js/jquery.fancybox.min.js"></script>
+      <!-- custom js -->
+      <script src="../static/assets/js/custom.js"></script>
+      <!-- calendar file css -->    
+      <script src="../static/assets/js/semantic.min.js"></script>
+   </body>
+</html>

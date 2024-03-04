@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title> Admin Dashboard </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="../static/assets/images/fevicon.png" type="image/png" />
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css" />
+      <!-- site css -->
+      <link rel="stylesheet" href="../static/assets/style.css" />
+      <!-- responsive css -->
+      <link rel="stylesheet" href="../static/assets/css/responsive.css" />
+      <!-- color css -->
+      <link rel="stylesheet" href="../static/assets/css/colors.css" />
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="../static/assets/css/bootstrap-select.css" />
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="../static/assets/css/perfect-scrollbar.css" />
+      <!-- custom css -->
+      <link rel="stylesheet" href="../static/assets/css/custom.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.../static/assets/js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body class="dashboard dashboard_1">
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+                  <div class="sidebar-header">
+                     <div class="logo_section">
+                        <a href="index.html"><img class="logo_icon img-responsive" src="../static/assets/images/logo/newlogo.png" alt="#" /></a>
+                     </div>
+                  </div>
+                  <div class="sidebar_user_info">
+                     <div class="icon_setting"></div>
+                     <div class="user_profle_side">
+                        <div class="user_img"><img class="img-responsive" src="../static/assets/images/layout_img/user_img.png" alt="#" /></div>
+                        <div class="user_info">
+                           <h6> {{msg}}</h6>
+                           <p><span class="online_animation"></span> Online</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="sidebar_blog_2">
+                  <h4>General</h4>
+                  <ul class="list-unstyled components">
+                     <li><a href="{{ url_for('dashboard') }}"><i class="fa fa-dashboard purple_color2"></i> <span>Dashboard</span></a></li>
+                     <li><a href="{{ url_for('exploreusers') }}"><i class="fa fa-user yellow_color"></i> <span> Explore Users </span></a></li>
+                     <li><a href="{{ url_for('exploreappointment') }}"><i class="fa fa-calendar green_color"></i> <span> Explore Appointment</span></a></li>
+                     <li><a href="{{ url_for('exploreprescription') }}"><i class="fa fa-object-group blue2_color"></i> <span>Explore Prescription</span></a></li>
+                     <li><a href="{{ url_for('drunavailability') }}"><i class="fa fa-calendar yellow_color"></i> <span>Add Dr Unavailability</span></a></li>
+                     <li><a href="{{ url_for('explorefeedback') }}"><i class="fa fa-comments-o red_color"></i> <span>Explore Feedback</span></a></li>
+                     
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                        <div class="logo_section">
+                           <a href="index.html"><img class="img-responsive" src="../static/assets/images/logo/logo.png" alt="#" /></a>
+                        </div>
+                        <div class="right_topbar">
+                           <div class="icon_info">
+                              <ul>
+                                 <!-- <li><a href="#"><i class="fa fa-bell-o"></i><span class="badge">2</span></a></li>
+                                 <li><a href="#"><i class="fa fa-question-circle"></i></a></li>  -->
+                                 <!-- <li style="background-color: #7abf26;"><a href="#"><i class="fa fa-envelope-o"></i><span class="badge"></span></a></li> -->
+                                 <li>
+                                    <div>
+                                    <form  action="{{ url_for('sendreminder') }}" method="POST">
+                                    <center><input class="btn btn-success" type="submit" name="rmmail" value="Send Reminder Mail"></center>
+                                    </form>
+                                    </div>
+                                 </li>
+                                 <li></li><li></li>
+                                 <li></li>
+                              </ul>
+                              <ul class="user_profile_dd">
+                                 <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="../static/assets/images/layout_img/user_img.png" alt="#" /><span class="name_user">{{msg}}</span></a>
+                                    <div class="dropdown-menu">
+                                       <a class="dropdown-item" href="{{ url_for('adminlogout') }}"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title">
+                              <h2>Dashboard</h2>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row column1">
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-user yellow_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{cntlist[0]}}</p>
+                                    <a href="{{ url_for('exploreusers') }}"><p class="head_couter">Total  <br>   Users</p></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-clock-o blue1_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{cntlist[1]}}</p>
+                                    <a href="{{ url_for('exploreappointment') }}"><p class="head_couter">Today Appointments</p></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-calendar green_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{cntlist[2]}}</p>
+                                    <a href="{{ url_for('exploreprescription') }}"><p class="head_couter">Total Appointments</p></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="full counter_section margin_bottom_30">
+                              <div class="couter_icon">
+                                 <div> 
+                                    <i class="fa fa-comments-o red_color"></i>
+                                 </div>
+                              </div>
+                              <div class="counter_no">
+                                 <div>
+                                    <p class="total_no">{{cntlist[3]}}</p>
+                                    <a href="{{ url_for('explorefeedback') }}"><p class="head_couter">User Feedback Message</p></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <center>
+                           <div class="flashes" style="text-align: center;">
+                           {% for successmssg in get_flashed_messages() %}
+                             {{ successmssg }}
+                           {% endfor %}
+                         </div>
+                        </center>
+                     </div>
+                     
+
+                  </div>
+                  <!-- footer -->
+                  <div class="container-fluid">
+                     <div class="footer">
+                        <p>Copyright © 2024 Designed by html.design. All rights reserved.</p>
+                     </div>
+                  </div>
+               </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+      </div>
+      <!-- jQuery -->
+      <script src="../static/assets/js/jquery.min.js"></script>
+      <script src="../static/assets/js/popper.min.js"></script>
+      <script src="../static/assets/js/bootstrap.min.js"></script>
+      <!-- wow animation -->
+      <script src="../static/assets/js/animate.js"></script>
+      <!-- select country -->
+      <script src="../static/assets/js/bootstrap-select.js"></script>
+      <!-- owl carousel -->
+      <script src="../static/assets/js/owl.carousel.js"></script> 
+      <!-- chart js -->
+      <script src="../static/assets/js/Chart.min.js"></script>
+      <script src="../static/assets/js/Chart.bundle.min.js"></script>
+      <script src="../static/assets/js/utils.js"></script>
+      <script src="../static/assets/js/analyser.js"></script>
+      <!-- nice scrollbar -->
+      <script src="../static/assets/js/perfect-scrollbar.min.js"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="../static/assets/js/custom.js"></script>
+      <script src="../static/assets/js/chart_custom_style1.js"></script>
+   </body>
+</html>
